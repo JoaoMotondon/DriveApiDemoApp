@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_filtering_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:text="When choosing an option below, a Drive File Picker will open. Then, choose a file/folder you want and click on 'Select' button. " />
+
+        <Button
+            android:id="@+id/btn_open_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Open File Test"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_pin_unpin_file"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Pin/Unpin File Test"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_retrieve_file_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Retrieve File Content Test"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_retrieve_file_metadata"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Retrieve File Metadata"
+            android:textAllCaps="false" />
+
+        <Button
+            android:id="@+id/btn_count_files_in_folder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Count Files in Folder"
+            android:textAllCaps="false" />
+
+
+    </LinearLayout>
+
+</LinearLayout>
