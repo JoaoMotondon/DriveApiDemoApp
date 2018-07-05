@@ -37,6 +37,15 @@
         <activity android:name=".activity.DriveFilesManipulationActivity">
         </activity>
 
+        <activity android:name=".activity.DriveFolderMonitorActivity">
+        </activity>
+
+        <activity android:name=".activity.ConflictResolutionActivity">
+        </activity>
+
+        <activity android:name=".activity.CreateUpdateTaskActivity">
+        </activity>
+
     </application>
 
 </manifest>

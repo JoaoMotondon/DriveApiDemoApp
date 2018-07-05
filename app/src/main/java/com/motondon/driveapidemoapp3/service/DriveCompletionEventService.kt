@@ -7,6 +7,7 @@ import android.util.Log
 import com.google.android.gms.drive.events.CompletionEvent
 import com.google.android.gms.drive.events.DriveEventService
 import com.motondon.driveapidemoapp3.common.Constants
+import com.motondon.driveapidemoapp3.conflict.ConflictResolver
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -28,9 +29,17 @@ class DriveCompletionEventService : DriveEventService() {
     }
 
     override fun onCompletion(event: CompletionEvent) {
-        Log.d(TAG, "onCompletion() - received event: ${event.toString()}")
+        Log.d(TAG, "onCompletion() - received event: $event")
 
         when {
+            event.status == CompletionEvent.STATUS_CONFLICT -> {
+                Log.d(TAG, "onCompletion() - Detected STATUS_CONFLICT. Resolving it...")
+                // Handle completion conflict.
+                val conflictResolver = ConflictResolver(event, this, mExecutorService)
+                conflictResolver.resolve()
+
+                // Note we are not dismissing CompletionEvent here, since it can be snoozed by the ConflictResolver
+            }
             event.status == CompletionEvent.STATUS_FAILURE -> {
                 Log.d(TAG, "onCompletion() - Detected STATUS_FAILURE.")
                 // Handle completion failure.

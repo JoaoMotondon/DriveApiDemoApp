@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_filtering_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.motondon.driveapidemoapp3.fragments.DriveFolderMonitorFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:text="This activity monitors a drive folder you choose. Make changes on it (e.g.: add files, remove folder, etc) and check the notification area below being updated. \n\nActually this feature does not work as we first expected. \n\nFor details, please, check the 'Drive Android API Integration' article on http://androidahead.com" />
+
+        <TextView
+            android:id="@+id/tvCurrentMonitoredFolder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="16dp"
+            android:text="Monitoring file/folder: --"
+            android:textSize="18dp" />
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnChooseFolder"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select Drive Folder"
+                android:textAllCaps="false" />
+
+            <Button
+                android:id="@+id/btnStopMonitoring"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Stop Monitoring"
+                android:textAllCaps="false" />
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/tvFileEvents"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:paddingTop="16dp"></TextView>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>

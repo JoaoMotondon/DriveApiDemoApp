@@ -47,6 +47,15 @@ abstract class BaseFragment : Fragment() {
         buildGoogleSignInClient()
     }
 
+    override fun onDestroy() {
+        Log.d(TAG, "onDestroy")
+        super.onDestroy()
+
+        // If you want to sign out whenever when leaving each fragment, just un-comment these two lines
+        //Log.d(TAG, "onDestroy() - Calling signOut() method...")
+        //signOut()
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         Log.d(TAG, "onActivityResult() - requestCode: $requestCode - resultCode: $resultCode")
 
@@ -65,7 +74,7 @@ abstract class BaseFragment : Fragment() {
                 if (getAccountTask.isSuccessful) {
                     initializeDriveClient(getAccountTask.result)
                 } else {
-                    Log.e(TAG, "Sign-in failed.")
+                    Log.e(TAG, "Sign-in failed.", getAccountTask.exception)
                     activity?.finish()
                 }
             }
@@ -106,12 +115,43 @@ abstract class BaseFragment : Fragment() {
     }
 
     /**
+     * When calling this method, current user will be signed out. After that, next time he/she tries to open a fragment, he will be
+     * required to sign in again.
+     *
+     * Currently we are only allowing users to sign out from inside the ConflictResolutionFragment by choosing the appropriate
+     * menu option, but you can add it to the others fragments.
+     *
+     * We also let a call for this method in the BaseFragment::onDestroy(), but it is commented out. If you want user to be
+     * signed out whenever it leaves any fragment, just uncomment that method call
+     *
+     */
+    fun signOut() {
+        Log.d(TAG, "signOut() - Begin")
+
+        val signInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestScopes(Drive.SCOPE_FILE)
+                .requestScopes(Drive.SCOPE_APPFOLDER)
+                .build()
+        val googleSignInClient = GoogleSignIn.getClient(mContext, signInOptions)
+
+        googleSignInClient?.let {
+            it.signOut()
+                .addOnSuccessListener {
+                    Log.d(TAG, "signOut() - User sign out successfully")
+                }
+                .addOnFailureListener {
+                    Log.e(TAG, "signOut() - Failure while trying to sign out user", it)
+                }
+        }
+        Log.d(TAG, "signOut() - End")
+    }
+    /**
      * Continues the sign-in process, initializing the Drive clients with the current
      * user's account.
      *
      */
     private fun initializeDriveClient(signInAccount: GoogleSignInAccount) {
-        Log.d(TAG, "buildGoogleSignInClient() - Found a signInAccount. Get client.")
+        Log.d(TAG, "initializeDriveClient() - Found a signInAccount. Get client.")
 
         mDriveClient = Drive.getDriveClient(mContext, signInAccount)
         mDriveResourceClient = Drive.getDriveResourceClient(mContext, signInAccount)
@@ -147,6 +187,6 @@ abstract class BaseFragment : Fragment() {
 
     companion object {
         private val TAG = BaseFragment::class.java.simpleName
-        private const val REQUEST_CODE_SIGN_IN = 0
+        private const val REQUEST_CODE_SIGN_IN = 500
     }
 }

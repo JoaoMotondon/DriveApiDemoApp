@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="10dp" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Tasks List"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:id="@+id/headderTextView"
+        android:layout_gravity="center_horizontal"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="To see how conflicts resolution works, first create new tasks (menu -> Create Task) and then sync by executing 'Sync' menu option. Then add a couple of more tasks on a second device and also perform a sync. You will see the tasks resolution in the list below. \n\nFor details, please, check the 'Drive Android API Integration' article on http://androidahead.com"
+        android:layout_gravity="center_horizontal"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mTasksListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="2dp"
+        android:paddingRight="2dp"
+        android:scrollbarFadeDuration="0"
+        android:scrollbars="vertical" />
+
+</LinearLayout>

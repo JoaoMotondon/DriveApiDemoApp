@@ -20,7 +20,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="This app is intended to demonstrate how to integrate Drive services into an Android application. Click on the buttons below to start a new activity with specific set of tests. \n\nFor details, please, check the DriveAPIDemoApp article on androidahead.com"
+            android:text="This app is intended to demonstrate how to integrate Drive services into an Android application. Click on the buttons below to start a new activity with specific set of tests. \n\nFor details, please, check the 'Drive Android API Integration' article on http://androidahead.com"
             android:paddingBottom="16dp" />
 
         <Button
@@ -42,16 +42,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Conflict Resolution"
-            android:textAllCaps="false"
-            android:enabled="false" />
+            android:textAllCaps="false" />
 
         <Button
             android:id="@+id/btnDriveFolderMonitor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Drive Folder Monitor"
-            android:textAllCaps="false"
-            android:enabled="false" />
+            android:textAllCaps="false" />
 
     </LinearLayout>
 

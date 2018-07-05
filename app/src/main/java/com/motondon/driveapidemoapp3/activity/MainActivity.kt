@@ -14,6 +14,8 @@ class MainActivity : AppCompatActivity() {
 
         btnFileFolderManipulationWithFileOpener.setOnClickListener({filesAndFolderManipulationWithFileOpenerClick()})
         btnFQueryAndListFilesAndFolders.setOnClickListener({queryAndListFilesAndFoldersClick()})
+        btnDriveFolderMonitor.setOnClickListener({listenDriveRootFolderClick()})
+        btnConflictResolution.setOnClickListener({conflictResolutionClick()})
     }
 
     private fun filesAndFolderManipulationWithFileOpenerClick() {
@@ -23,6 +25,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun queryAndListFilesAndFoldersClick() {
         val i = Intent(applicationContext, DriveFilesManipulationActivity::class.java)
+        startActivity(i)
+    }
+
+    private fun listenDriveRootFolderClick() {
+        val i = Intent(applicationContext, DriveFolderMonitorActivity::class.java)
+        startActivity(i)
+    }
+
+    private fun conflictResolutionClick() {
+        val i = Intent(applicationContext, ConflictResolutionActivity::class.java)
         startActivity(i)
     }
 }
